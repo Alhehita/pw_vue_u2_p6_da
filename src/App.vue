@@ -1,8 +1,11 @@
 <template>
+  
   <img src="./assets/logo.png" alt="No se pudo cargar la imagen">
-  <Contador titulo="Estudiante"/> 
-  <Contador titulo="Profesor"/> 
-  <Contador/>
+  <Contador titulo="Estudiante" :num="-1" />
+  <Contador titulo="Profesor" :num="5" />
+  <Contador v-bind:num="10+1" />
+  <Contador titulo="v-bind"  />
+  
 </template>
  
 <script>
@@ -10,11 +13,16 @@ import Contador from './components/Contador.vue'
 
 export default {
 
-  
+
 
   name: 'App',
   components: {
     Contador,
+  },
+  methods:{
+    calcularValor(){
+      return 10+2;
+    }
   }
 }
 </script>
