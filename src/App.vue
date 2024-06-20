@@ -1,14 +1,16 @@
 <template>
- <Pregunta/>
+  <PokemonPage/>
 </template>
  
 <script>
-import Pregunta from './components/Pregunta.vue'
+import PokemonPage from './pages/PokemonPage.vue'
+//import Pregunta from './components/Pregunta.vue'
 
 export default {
   name: 'App',
   components: {
-    Pregunta,
+    PokemonPage
+    //Pregunta,
   }
 }
 </script>
@@ -24,3 +26,5 @@ export default {
   margin-top: 60px;
 }
 </style>
+
+

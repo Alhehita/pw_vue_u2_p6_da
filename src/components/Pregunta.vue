@@ -1,18 +1,15 @@
 <template>
-    <img v-if="img!==null" v-bind:src="img" alt="No se puede visualizar la imagen">
-
-
+    <img v-if="img" v-bind:src="img" alt="No se puede visualizar la imagen">
     <div class="oscuro">
-
     </div>
     <div class="pregunta-container">
 
         <input v-model="pregunta" type="text" placeholder="Hazme una pregunta">
         <p>Recuerda terminar la pregunta con el signo de interrogación (?)</p>
 
-        <div class="respuesta">
+        <div v-show="mensaje" class="respuesta">
             <h2>{{ pregunta }}</h2>
-            <h1>{{ respuesta }}</h1>
+            <h1>{{ respuesta === 'yes'? "SI!":"No!"}}</h1>
         </div>
     </div>
 </template>
@@ -25,10 +22,12 @@ export default {
             pregunta: null,
             respuesta: null,
             img: null,
+            mensaje:false,
         }
     },
     watch: {
         pregunta(value, oldValue) {
+            this.mensaje = false
 
             console.log({
                 value, oldValue
@@ -39,25 +38,26 @@ export default {
             }
 
             this.obtenerRespuesta();
-        }
+            this.mensaje = true;
+        },
     },
 
     methods: {
         async obtenerRespuesta() {
-            this.respuesta="Pensando...."
+            this.respuesta = "Pensando....";
             const data = await fetch('https://yesno.wtf/api').then(resp => resp.json());
-            console.log(data)
-            const { answer, forced, img } = data;
-            console.log(answer)
+            console.log(data);
+            const { answer, forced, image } = data;
+            console.log(answer);
             this.respuesta = answer;
-            this.img= img;
+            this.img = image;
             return data;
         }
     },
 };
 </script>
 
-<style>
+<style scoped>
 img,
 .oscuro {
     max-height: 100%;
@@ -99,7 +99,7 @@ input:focus {
 p,
 h1,
 h2 {
-    color: white;
+    color:  #faed27;
 }
 
 p {
@@ -110,4 +110,6 @@ p {
 .respuesta {
     margin-top: 120px;
 }
+
+
 </style>
