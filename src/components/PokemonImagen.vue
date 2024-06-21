@@ -1,16 +1,16 @@
 <template>
   <div class="pokemon-container">
     <img
-      v-show="mostrar"
+      v-show="revelarPokemon"
       class="imgNormal"
-      src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/54.svg"
+      :src="imagenFuente"
       alt="No se puede visualizar el Pokemon"
     />
 
     <img
-      v-show="!mostrar"
+      v-show="!revelarPokemon"
       class="img-Oscura"
-      src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/54.svg"
+      :src="imagenFuente"
       alt="No se puede visualizar el Pokemon"
     />
   </div>
@@ -20,6 +20,23 @@
 export default {
   data() {
     return { mostrar: false };
+  },
+
+  props: {
+    idPokemon: {
+      typeof: Number,
+      require: true,
+    },
+    revelarPokemon: {
+      typeof: Boolean,
+      require: true,
+      default: false,
+    },
+  },
+  computed: {
+    imagenFuente() {
+      return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${this.idPokemon}.svg`;
+    },
   },
 };
 </script>
@@ -36,7 +53,7 @@ img {
   right: 45%;
 }
 
-.pokemon-container{
-    height: 200px;
+.pokemon-container {
+  height: 200px;
 }
 </style>
