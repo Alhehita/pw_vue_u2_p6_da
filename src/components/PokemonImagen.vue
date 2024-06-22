@@ -24,11 +24,11 @@ export default {
 
   props: {
     idPokemon: {
-      typeof: Number,
+      type: Number,
       require: true,
     },
     revelarPokemon: {
-      typeof: Boolean,
+      type: Boolean,
       require: true,
       default: false,
     },
@@ -46,14 +46,18 @@ export default {
   filter: brightness(0);
 }
 
+
+.pokemon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  height: 200px;
+}
+
 img {
   height: 200px;
   width: auto;
-  position: absolute;
-  right: 45%;
+  
 }
 
-.pokemon-container {
-  height: 200px;
-}
 </style>
