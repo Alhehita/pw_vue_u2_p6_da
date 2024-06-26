@@ -51,11 +51,11 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center; 
-  height: 200px;
+  height: 175px;
 }
 
 img {
-  height: 200px;
+  height: 175px;
   width: auto;
   
 }

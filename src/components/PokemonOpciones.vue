@@ -44,6 +44,7 @@ li {
   padding: 5px;
   background: rgb(131, 123, 123);
   cursor: pointer;
+  color: black;
 }
 
 li:hover {
